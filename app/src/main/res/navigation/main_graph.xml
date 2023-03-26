@@ -14,21 +14,21 @@
     <fragment
         android:id="@+id/audioDVDSFragment"
         android:name="com.dvds.ui.audiodvds.AudioDVDSFragment"
-        android:label="fragment_audio_d_v_d_s"
+        android:label="AUDIO DVDS"
         tools:layout="@layout/fragment_audio_d_v_d_s" />
     <fragment
         android:id="@+id/videoDVDSFragment"
         android:name="com.dvds.ui.videodvds.VideoDVDSFragment"
-        android:label="fragment_video_d_v_d_s"
+        android:label="VIDEO DVDS"
         tools:layout="@layout/fragment_video_d_v_d_s" />
     <fragment
         android:id="@+id/EPublicationsFragment"
         android:name="com.dvds.ui.epublications.EPublicationsFragment"
-        android:label="fragment_e_publications"
+        android:label="E-PUBLICATIONS"
         tools:layout="@layout/fragment_e_publications" />
     <fragment
         android:id="@+id/contactFragment"
         android:name="com.dvds.ui.contact.ContactFragment"
-        android:label="fragment_contact"
+        android:label="CONTACT"
         tools:layout="@layout/fragment_contact" />
 </navigation>
