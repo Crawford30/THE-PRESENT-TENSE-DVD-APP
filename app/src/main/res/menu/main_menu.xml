@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single" >
+        <item
+            android:icon="@drawable/ic_home"
+            android:id="@+id/homeFragment"
+            android:title="HOME" />
+        <item
+            android:id="@+id/presentTenseSongsFragment"
+            android:icon="@drawable/ic_inbox"
+            android:title="THE PRESENT TENSE SONGS" />
+        <item
+            android:id="@+id/godTenMajorSongsFragment"
+            android:icon="@drawable/ic_inbox"
+            android:title="GOD TEN MAJOR SONGS" />
+        <item
+            android:id="@+id/bigSongBookSongsFragment"
+            android:icon="@drawable/ic_inbox"
+            android:title="THE BIG SONGBOOK SONGS" />
+        <item
+            android:id="@+id/praisesAndWorshipSongsFragment"
+            android:icon="@drawable/ic_inbox"
+            android:title="PRAISES AND WORSHIP SONGS" />
+        <item
+            android:id="@+id/variousTonguesSongsFragment"
+            android:icon="@drawable/ic_inbox"
+            android:title="SONGS IN VARIOUS TONGUES" />
+
+    </group>
+
+    <item android:title="Actions">
+        <menu>
+            <group  android:checkableBehavior="single">
+                <item
+                    android:id="@+id/thirdFragment"
+                    android:icon="@drawable/ic_adb"
+                    android:title="Setting" />
+
+            </group>
+        </menu>
+    </item>
+    <item android:title="Account">
+        <menu>
+            <group  android:checkableBehavior="single">
+                <item
+                    android:id="@+id/tenthFragment"
+                    android:icon="@drawable/ic_inbox"
+                    android:title="Logout" />
+            </group>
+        </menu>
+    </item>
+    <group android:id="@+id/about">
+        <item
+            android:checkable="true"
+            android:title="About"/>
+        <item
+            android:checkable="true"
+            android:title="Contact Us"/>
+    </group>
+</menu>
