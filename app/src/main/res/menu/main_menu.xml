@@ -6,25 +6,22 @@
             android:id="@+id/homeFragment"
             android:title="HOME" />
         <item
-            android:id="@+id/presentTenseSongsFragment"
-            android:icon="@drawable/ic_inbox"
-            android:title="THE PRESENT TENSE SONGS" />
+            android:id="@+id/audioDVDSFragment"
+            android:icon="@drawable/ic_music"
+            android:title="AUDIO DVDS" />
+
         <item
-            android:id="@+id/godTenMajorSongsFragment"
-            android:icon="@drawable/ic_inbox"
-            android:title="GOD TEN MAJOR SONGS" />
+            android:id="@+id/videoDVDSFragment"
+            android:icon="@drawable/ic_movie"
+            android:title="VIDEO DVDS" />
         <item
-            android:id="@+id/bigSongBookSongsFragment"
-            android:icon="@drawable/ic_inbox"
-            android:title="THE BIG SONGBOOK SONGS" />
+            android:id="@+id/EPublicationsFragment"
+            android:icon="@drawable/ic_book"
+            android:title="E-PUBLICATIONS" />
         <item
-            android:id="@+id/praisesAndWorshipSongsFragment"
-            android:icon="@drawable/ic_inbox"
-            android:title="PRAISES AND WORSHIP SONGS" />
-        <item
-            android:id="@+id/variousTonguesSongsFragment"
-            android:icon="@drawable/ic_inbox"
-            android:title="SONGS IN VARIOUS TONGUES" />
+            android:id="@+id/contactFragment"
+            android:icon="@drawable/ic_contact"
+            android:title="CONTACT" />
 
     </group>
 

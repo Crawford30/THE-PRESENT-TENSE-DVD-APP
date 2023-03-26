@@ -6,7 +6,13 @@
         <entry key="app/src/main/res/drawable/home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_auth.xml" value="0.13177083333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13177083333333334" />
+        <entry key="app/src/main/res/layout/fragment_audio_d_v_d_s.xml" value="0.11770833333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.12864583333333332" />
+        <entry key="app/src/main/res/layout/fragment_video_d_v_d_s.xml" value="0.11770833333333333" />
+        <entry key="app/src/main/res/layout/navbar_background.xml" value="0.13177083333333334" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.13177083333333334" />
       </map>
     </option>
   </component>

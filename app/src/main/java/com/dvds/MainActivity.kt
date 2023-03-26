@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.drawer_layout)
 
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment,  R.id.presentTenseSongsFragment,R.id.godTenMajorSongsFragment,R.id.bigSongBookSongsFragment,R.id.praisesAndWorshipSongsFragment,R.id.variousTonguesSongsFragment), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment,  R.id.audioDVDSFragment,R.id.videoDVDSFragment,R.id.EPublicationsFragment,R.id.contactFragment), drawerLayout)
 
         toolbar.setupWithNavController(navController, appBarConfiguration)
 

@@ -12,28 +12,23 @@
         android:label="HOME"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/presentTenseSongsFragment"
-        android:name="com.dvds.ui.presenttense.PresentTenseSongsFragment"
-        android:label="THE PRESENT TENSE SONGS"
-        tools:layout="@layout/fragment_present_tense_songs" />
+        android:id="@+id/audioDVDSFragment"
+        android:name="com.dvds.ui.audiodvds.AudioDVDSFragment"
+        android:label="fragment_audio_d_v_d_s"
+        tools:layout="@layout/fragment_audio_d_v_d_s" />
     <fragment
-        android:id="@+id/godTenMajorSongsFragment"
-        android:name="com.dvds.ui.tenmajor.GodTenMajorSongsFragment"
-        android:label="GOD TEN MAJOR SONGS"
-        tools:layout="@layout/fragment_god_ten_major_songs" />
+        android:id="@+id/videoDVDSFragment"
+        android:name="com.dvds.ui.videodvds.VideoDVDSFragment"
+        android:label="fragment_video_d_v_d_s"
+        tools:layout="@layout/fragment_video_d_v_d_s" />
     <fragment
-        android:id="@+id/bigSongBookSongsFragment"
-        android:name="com.dvds.ui.bigsongbook.BigSongBookSongsFragment"
-        android:label="THE BIG SONGBOOK SONGS"
-        tools:layout="@layout/fragment_big_song_book_songs" />
+        android:id="@+id/EPublicationsFragment"
+        android:name="com.dvds.ui.epublications.EPublicationsFragment"
+        android:label="fragment_e_publications"
+        tools:layout="@layout/fragment_e_publications" />
     <fragment
-        android:id="@+id/praisesAndWorshipSongsFragment"
-        android:name="com.dvds.ui.praisesandworship.PraisesAndWorshipSongsFragment"
-        android:label="PRAISES AND WORSHIP SONGS"
-        tools:layout="@layout/fragment_praises_and_worship_songs" />
-    <fragment
-        android:id="@+id/variousTonguesSongsFragment"
-        android:name="com.dvds.ui.varioustongues.VariousTonguesSongsFragment"
-        android:label="SONGS IN VARIOUS TONGUES"
-        tools:layout="@layout/fragment_various_tongues_songs" />
+        android:id="@+id/contactFragment"
+        android:name="com.dvds.ui.contact.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
 </navigation>

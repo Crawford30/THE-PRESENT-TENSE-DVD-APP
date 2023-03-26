@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dvds.data.respository.BaseRepository
 import com.dvds.data.respository.SongRepository
 import com.dvds.datasource.AuthRepository
-import com.dvds.ui.presenttense.PresentTenseViewModel
+import com.dvds.ui.audiodvds.PresentTenseViewModel
 import com.dvds.ui.auth.AuthViewModel
 import java.lang.IllegalArgumentException
 
