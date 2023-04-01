@@ -7,10 +7,10 @@ import retrofit2.http.GET
 interface DVDApi {
 
     //==video DVD
-    @GET("/api/video-dvd/list")
+    @GET("/api/video-dvd/user-video-dvd-list")
     suspend fun getPresentTenseVideoDVD(): VideoDVDResponse
 
     //==Audio DVD
-    @GET("/api/audio-dvd/list")
+    @GET("/api/audio-dvd/user-audio-dvd-list")
     suspend fun getPresentTenseAudioDVD(): AudioDVDResponse
 }
