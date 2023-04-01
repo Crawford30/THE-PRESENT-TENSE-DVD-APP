@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme.PresentTense">
 
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/NoActionBarTheme"
             android:name="com.dvds.ui.auth.AuthActivity"
             android:exported="true">
             <intent-filter>
@@ -27,6 +27,10 @@
             android:exported="true">
 
         </activity>
+
+
     </application>
+
+
 
 </manifest>

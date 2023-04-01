@@ -3,7 +3,7 @@ package com.dvds.data.responses.audiodvd
 
 import com.google.gson.annotations.SerializedName
 
-data class AudioDVDResult(
+data class Result(
     @SerializedName("audio_dvd_name")
     val audioDvdName: String,
     @SerializedName("audio_dvd_path")

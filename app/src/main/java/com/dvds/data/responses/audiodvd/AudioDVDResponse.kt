@@ -1,6 +1,8 @@
 package com.dvds.data.responses.audiodvd
 
 
+import com.google.gson.annotations.SerializedName
+
 data class AudioDVDResponse(
-    val audioDVDResults: List<AudioDVDResult>
+    val results: List<Result>
 )

@@ -1,11 +1,14 @@
 package com.dvds.ui.audiodvds
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
@@ -22,11 +25,14 @@ import com.dvds.helpers.TopSpacingItemDecoration
 import com.dvds.helpers.handleApiError
 import com.dvds.helpers.visible
 import com.dvds.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_audio_d_v_d_s.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
 
 class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBinding,AudioDVDRepository>(){
+
+
     private lateinit var presentTenseAudioDVDAdapter: PresentTenseAudioDVDAdapter
 
 
@@ -40,76 +46,83 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val searchIcon = search_recycler_fragment.findViewById<ImageView>(R.id.search_mag_icon)
+        searchIcon.setColorFilter(Color.WHITE)
+
+
+        //color of cancel btn
+        val cancelIcon = search_recycler_fragment.findViewById<ImageView>(R.id.search_close_btn)
+        cancelIcon.setColorFilter(Color.WHITE)
+
+        //color of text view
+        val textView = search_recycler_fragment.findViewById<TextView>(R.id.search_src_text)
+        textView.setTextColor(Color.WHITE)
+
         viewModel.getPresentTenseAudioDVDLists()
 
         //observer the songs
         viewModel.presentTenseAudioDVD.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Success -> {
-                    print("LIST DATA BEFORE MODIFICATION ${it.value.audioDVDResults}")
-                    binding.progressbar.visible(false)
-                    Toast.makeText(context?.applicationContext, "Present Tense Songs: ${it.value.audioDVDResults}" , Toast.LENGTH_LONG).show()
+                    print("LIST DATA BEFORE MODIFICATION ${it.value.results}")
+                   // binding.progressbar.visible(false)
+                    Toast.makeText(context?.applicationContext, "Present Tense Songs: ${it.value.results}" , Toast.LENGTH_LONG).show()
 
 
-                    val mainObject = JSONArray(it.value.audioDVDResults)
+                    val mainObject = JSONArray(it.value.results)
 
                     // val myJsonArray: JSONArray = mainObject.getJSONArray("results")
 
-                    var list = (it.value.audioDVDResults)
+                    var list = (it.value.results.toMutableList())
 
-                    //var mutableArray = presentTenseList.toMutableList()
+                    var mutableArray = presentTenseList.toMutableList()
 
 
                     Log.d("HomeFragment", "Present Tense LIST VALUE ARRAY: ${list}")
 
-//                    PresentTenseAudioDVDDatabase.invoke(activity!!.applicationContext).presentTenseAudioDVDDao().deleteAllPresentTenseAudioDVD()
-//                    for(element in list) {
-//                        val audioDVDData = AudioDVD(
-//                            audioDVDName = element.audioDvdName,
-//                            audioDVDPath = element.audioDvdPath,
-//                            creationDate = element.creationDate,
-//                        )
-//
-//                        presentTenseAudioDVDSList.add(audioDVDData)
-//
-//                        mutableArray.add(AudioDVD(element.audioDvdName, element.audioDvdPath, element.creationDate))
-//                        Log.d("HomeFragment", "Present Tense AUDIO DVD LIST VALUE: ${element.audioDvdName}")
-//                        //print(" ${element.songBody}")
-//                    }
+                   PresentTenseAudioDVDDatabase.invoke(activity!!.applicationContext).presentTenseAudioDVDDao().deleteAllPresentTenseAudioDVD()
+                    for(element in list) {
+                        val audioDVDData = AudioDVD(
+                            audioDVDName = element.audioDvdName,
+                            audioDVDPath = element.audioDvdPath,
+                            creationDate = element.creationDate,
+                        )
+
+                        presentTenseAudioDVDSList.add(audioDVDData)
+
+                        mutableArray.add(AudioDVD(element.audioDvdName, element.audioDvdPath, element.creationDate))
+                        Log.d("HomeFragment", "Present Tense AUDIO DVD LIST VALUE: ${element.audioDvdName}")
+                        //print(" ${element.songBody}")
+                    }
 
                     PresentTenseAudioDVDDatabase.invoke(activity!!.applicationContext).presentTenseAudioDVDDao().insertPresentTenseAudioDVD(presentTenseAudioDVDSList)
 
-                    print("LIST DATA CHANGE MODIFIED ${list}")
+                    print("LIST DATA CHANGE MODIFIED ${presentTenseAudioDVDSList}")
 
 
 
-                    Log.d("HomeFragment", "Present Tense LIST: ${list}")
-//
-//                    binding.audioDvdRecyclerView.apply {
-//
-//                        layoutManager = LinearLayoutManager(activity)
-//
-//                        val topSPacingDecoration = TopSpacingItemDecoration(20)
-//                        addItemDecoration(topSPacingDecoration)
-//
-//
-////                        val audioDVDList =   PresentTenseAudioDVDDatabase.invoke(activity!!.applicationContext).presentTenseAudioDVDDao().getPresentTenseAudioDVDLists()
-////
-//                      presentTenseAudioDVDAdapter = PresentTenseAudioDVDAdapter((list as ArrayList<AudioDVD>))
-//
-//
-//                        adapter =  presentTenseAudioDVDAdapter
-//
-//
-//
-//
-//
-//                    }
+                    Log.d("HomeFragment", "Present Tense LIST: ${it.value.results}")
+
+                    binding.dvdRecyclerView.apply {
+
+                        layoutManager = LinearLayoutManager(activity)
+
+                        val topSPacingDecoration = TopSpacingItemDecoration(20)
+                        addItemDecoration(topSPacingDecoration)
+
+
+                        val audioDVDList =   PresentTenseAudioDVDDatabase.invoke(activity!!.applicationContext).presentTenseAudioDVDDao().getPresentTenseAudioDVDLists()
+
+                      presentTenseAudioDVDAdapter = PresentTenseAudioDVDAdapter((audioDVDList as ArrayList<AudioDVD>))
+
+                        adapter =  presentTenseAudioDVDAdapter
+
+                    }
 
 
                     Toast.makeText(context?.applicationContext, "Present Tense Songs: ${presentTenseList}" , Toast.LENGTH_LONG).show()
 
-                    binding.searchAudioRecyclerFragment.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    binding.searchRecyclerFragment.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(query: String?): Boolean {
                             return false
                         }
@@ -124,7 +137,7 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
                 }
 
                 is Resource.Loading -> {
-                    binding.progressbar.visible(true)
+                    //binding.progressbar.visible(true)
                 }
 
                 is Resource.Failure -> {
@@ -133,7 +146,12 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
             }
         })
 
+
+
+
     }
+
+
 
 
     override fun getViewModel() = AudioDVDViewModel::class.java

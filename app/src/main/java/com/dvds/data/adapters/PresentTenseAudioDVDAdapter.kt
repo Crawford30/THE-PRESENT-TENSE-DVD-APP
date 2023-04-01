@@ -12,6 +12,8 @@ import com.dvds.R
 import com.dvds.data.model.AudioDVD
 import kotlinx.android.synthetic.main.dvd_items_layout.view.*
 
+
+
 class PresentTenseAudioDVDAdapter(private var presentTenseAudioDVDList: ArrayList<AudioDVD>): RecyclerView.Adapter<CustomPresentTenseVH>(),
     Filterable {
 
@@ -43,47 +45,17 @@ class PresentTenseAudioDVDAdapter(private var presentTenseAudioDVDList: ArrayLis
     }
 
     override fun onBindViewHolder(holder: CustomPresentTenseVH, position: Int) {
-
         var presentTenseAudioDVD = presentTenseItemsFilteredAudioDVDList[position]
 
-        holder?.view?.dvd_title
-
-        holder?.view?.dvd_title.text = presentTenseAudioDVD.audioDVDName
-
-        holder?.view?.dvd_date_created.text = presentTenseAudioDVD.creationDate
-
-        holder.view?.setOnClickListener { view ->
-
-            val context = view.context
 
 
-            print("CONTEXT ON CLICK LISTENER: ${context}")
+        holder?.view?.dvd_name_title.text = presentTenseAudioDVD.audioDVDName
 
-            Toast.makeText(context, ("message"), Toast.LENGTH_LONG).show()
+        holder?.view.dvd_creation_date.text = "Date: " + presentTenseAudioDVD.creationDate
 
-//            val intent = Intent(context, DetailActivity::class.java).apply{
-//
-//
-//                Toast.makeText(context, ("message"), Toast.LENGTH_LONG).show()
-//
-////                Toast.makeText(context,
-////                    presentTenseSongs?.songTitle,
-////                    Toast.LENGTH_LONG).show()
-//
-//
-//                //send data using intent
-//
-////                putExtra("PRESENTNUMBER",  presentTense?.songNumber)
-////                putExtra("PRESENTTITLE", presentTense?.songTitle)
-////                putExtra("PRESENTLYRIC", presentTense?.songBody)
-//
-//
-//
-//            }
-//
-//            context.startActivity(intent)
-            //onClickListener.invoke(view, presentTense)
-        }
+        holder?.presentTenseAudioDVDS = presentTenseAudioDVD
+
+
 
     }
 
@@ -128,11 +100,13 @@ class PresentTenseAudioDVDAdapter(private var presentTenseAudioDVDList: ArrayLis
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                // presentTenseItemsFilteredList = results?.values as ArrayList<PresentTense>
+                presentTenseItemsFilteredAudioDVDList = results?.values as ArrayList<AudioDVD>
                 notifyDataSetChanged()
 
 
             }
+
+
 
         }
 
@@ -154,41 +128,30 @@ class CustomPresentTenseVH(val view: View, var presentTenseAudioDVDS: AudioDVD? 
     RecyclerView.ViewHolder(view) {
 
 
-//
-//    init {
-//        view.setOnClickListener {
-//
-//            val context = view.context
-//
-//            print("CONTEXT ON CLICK LISTENER: ${context}")
-//
-//            Toast.makeText(context, ("message"),Toast.LENGTH_LONG).show()
-//
-//            val intent = Intent(context, DetailActivity::class.java).apply{
-//
-//
-//                Toast.makeText(context, ("message"),Toast.LENGTH_LONG).show()
-//
-////                Toast.makeText(context,
-////                    presentTenseSongs?.songTitle,
-////                    Toast.LENGTH_LONG).show()
-//
-//
-//                //send data using intent
-//                putExtra("PRESENTNUMBER", presentTenseSongs?.songNumber)
-//                putExtra("PRESENTTITLE", presentTenseSongs?.songTitle)
-//                putExtra("PRESENTLYRIC", presentTenseSongs?.songNumber)
-//
-//
-//            }
-//
-//            context.startActivity(intent)
-//
-//
-//        }
-//    }
+    //we will access our fields for the layout
+    var dvd_name = itemView.dvd_name_title
+    var dvd_date_created = itemView.dvd_creation_date
+
+    fun initialize(audioDVDItem: AudioDVD, action: onaudioDVDItemClickListener ){
+
+        dvd_name.text = audioDVDItem.audioDVDName
+        dvd_date_created.text = "Date: " + audioDVDItem.creationDate
+
+        itemView.setOnClickListener {
+
+            action.onItemClick(audioDVDItem, adapterPosition)
+        }
 
 
 
+    }
+
+
+
+}
+
+//=======INTERFACE TO IMPLEMENT ON CLICK
+interface  onaudioDVDItemClickListener {
+    fun onItemClick(audioDVDItem: AudioDVD, position: Int)
 
 }
