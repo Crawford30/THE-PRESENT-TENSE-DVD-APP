@@ -1,9 +1,10 @@
 package com.dvds.ui.audiodvds
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,27 +13,33 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.ExistingWorkPolicy
+import androidx.work.WorkManager
 import com.dvds.R
+import com.dvds.data.adapters.AudioDVDItemClickListener
 import com.dvds.data.adapters.PresentTenseAudioDVDAdapter
+import com.dvds.data.callback.HomeScreenCallback
 import com.dvds.data.db.presenttenseaudiodvd.PresentTenseAudioDVDDatabase
 import com.dvds.data.model.AudioDVD
 import com.dvds.data.network.DVDApi
 import com.dvds.data.network.Resource
 import com.dvds.data.respository.AudioDVDRepository
 import com.dvds.databinding.FragmentAudioDVDSBinding
+import com.dvds.helpers.Constants
 import com.dvds.helpers.TopSpacingItemDecoration
 import com.dvds.helpers.handleApiError
-import com.dvds.helpers.visible
 import com.dvds.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_audio_d_v_d_s.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
 
-class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBinding,AudioDVDRepository>(){
+class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBinding,AudioDVDRepository>(), AudioDVDItemClickListener{
 
-
+    private var homeScreenCallback: HomeScreenCallback? = null
+    private var videoList = arrayListOf<String>()
     private lateinit var presentTenseAudioDVDAdapter: PresentTenseAudioDVDAdapter
 
 
@@ -113,7 +120,7 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
 
                         val audioDVDList =   PresentTenseAudioDVDDatabase.invoke(activity!!.applicationContext).presentTenseAudioDVDDao().getPresentTenseAudioDVDLists()
 
-                      presentTenseAudioDVDAdapter = PresentTenseAudioDVDAdapter((audioDVDList as ArrayList<AudioDVD>))
+                      presentTenseAudioDVDAdapter = PresentTenseAudioDVDAdapter((audioDVDList as ArrayList<AudioDVD>), this@AudioDVDSFragment ,findNavController())
 
                         adapter =  presentTenseAudioDVDAdapter
 
@@ -152,8 +159,10 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
     }
 
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-
+    }
     override fun getViewModel() = AudioDVDViewModel::class.java
 
     override fun getFragmentBinding(
@@ -171,5 +180,40 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
 
         return AudioDVDRepository(api)
     }
+
+    override fun onItemClick(audioDVDItem: AudioDVD, position: Int, view: View) {
+        videoList.clear()
+        print("ITEM CLICKED: ${audioDVDItem} POSITION: ${position}")
+        Log.d("HomeFragment", "ITEM CLICKED: ${audioDVDItem} POSITION: ${position}")
+        val VIDEOURL = "http://10.0.2.2:8000/storage/" + audioDVDItem.audioDVDPath
+        videoList.add(VIDEOURL)
+
+
+        //val sendData = AudioDVDSFragment.playerFragment(VIDEOURL)
+
+      //  Navigation.findNavController(view).navigate(sendData)
+
+        //requireView().findNavController().navigate(R.id.action_audio_dvd_fragment_to_detail_fragment)
+        //navigate(R.id.eventoFragment);
+
+
+
+
+        //requireActivity().startNewActivity(DetailActivity::class.java)
+
+        Log.d("HomeFragment", "ITEM CLICKED VIDEO LIST: ${videoList}")
+        //homeScreenCallback?.openVideoPlayScreen(videoList[0])
+
+       // Navigation.findNavController(view)
+         //   .navigate(R.id.action_audio_dvd_fragment_to_detail_fragment, null)
+
+
+    }
+
+
+
+
+
+
 
 }

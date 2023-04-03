@@ -56,6 +56,14 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //Exoplayer
+    def exoplayer_version = "2.16.1"
+    def work_version = "2.5.0"
+
+    implementation "com.google.android.exoplayer:exoplayer:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
 
     // Room Database
     def room_version = "2.4.2"

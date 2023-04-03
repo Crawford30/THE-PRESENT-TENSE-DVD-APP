@@ -15,7 +15,11 @@
         android:id="@+id/audioDVDSFragment"
         android:name="com.dvds.ui.audiodvds.AudioDVDSFragment"
         android:label="AUDIO DVDS"
-        tools:layout="@layout/fragment_audio_d_v_d_s" />
+        tools:layout="@layout/fragment_audio_d_v_d_s">
+<!--        <action-->
+<!--            android:id="@+id/action_audio_dvd_fragment_to_detail_fragment"-->
+<!--            app:destination="@id/myFragment" />-->
+    </fragment>
     <fragment
         android:id="@+id/videoDVDSFragment"
         android:name="com.dvds.ui.videodvds.VideoDVDSFragment"
@@ -31,4 +35,5 @@
         android:name="com.dvds.ui.contact.ContactFragment"
         android:label="CONTACT"
         tools:layout="@layout/fragment_contact" />
+
 </navigation>
