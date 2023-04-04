@@ -21,3 +21,4 @@ class SplashViewModel : ViewModel() {
 sealed class SplashState {
     class MainActivity : SplashState()
 }
+
