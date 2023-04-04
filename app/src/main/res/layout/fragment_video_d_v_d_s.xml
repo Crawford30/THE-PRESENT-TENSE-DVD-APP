@@ -34,4 +34,10 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"/>
 
+    <ProgressBar
+        android:layout_centerInParent="true"
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

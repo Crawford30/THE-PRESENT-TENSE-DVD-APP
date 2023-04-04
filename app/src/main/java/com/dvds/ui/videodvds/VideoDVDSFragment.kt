@@ -29,6 +29,7 @@ import com.dvds.databinding.FragmentVideoDVDSBinding
 import com.dvds.helpers.Constants
 import com.dvds.helpers.TopSpacingItemDecoration
 import com.dvds.helpers.handleApiError
+import com.dvds.helpers.visible
 import com.dvds.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_audio_d_v_d_s.*
 import kotlinx.android.synthetic.main.fragment_video_d_v_d_s.*
@@ -74,8 +75,7 @@ class VideoDVDSFragment : BaseFragment<VideoDVDViewModel, FragmentVideoDVDSBindi
             when(it){
                 is Resource.Success -> {
                     print("LIST DATA BEFORE MODIFICATION ${it.value.results}")
-                    // binding.progressbar.visible(false)
-                    Toast.makeText(context?.applicationContext, "Present Tense Songs: ${it.value.results}" , Toast.LENGTH_LONG).show()
+                     binding.progressbar.visible(false)
 
 
                     val mainObject = JSONArray(it.value.results)
@@ -129,8 +129,7 @@ class VideoDVDSFragment : BaseFragment<VideoDVDViewModel, FragmentVideoDVDSBindi
 
                     }
 
-
-                    Toast.makeText(context?.applicationContext, "Present Tense Songs: ${presentTenseList}" , Toast.LENGTH_LONG).show()
+                 //   Toast.makeText(context?.applicationContext, "Present Tense Songs: ${presentTenseList}" , Toast.LENGTH_LONG).show()
 
                     binding.searchVideoDvdRecyclerFragment.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(query: String?): Boolean {
@@ -147,7 +146,7 @@ class VideoDVDSFragment : BaseFragment<VideoDVDViewModel, FragmentVideoDVDSBindi
                 }
 
                 is Resource.Loading -> {
-                    //binding.progressbar.visible(true)
+                    binding.progressbar.visible(true)
                 }
 
                 is Resource.Failure -> {

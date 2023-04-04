@@ -31,6 +31,7 @@ import com.dvds.databinding.FragmentAudioDVDSBinding
 import com.dvds.helpers.Constants
 import com.dvds.helpers.TopSpacingItemDecoration
 import com.dvds.helpers.handleApiError
+import com.dvds.helpers.visible
 import com.dvds.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_audio_d_v_d_s.*
 import kotlinx.coroutines.flow.first
@@ -73,8 +74,8 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
             when(it){
                 is Resource.Success -> {
                     print("LIST DATA BEFORE MODIFICATION ${it.value.results}")
-                   // binding.progressbar.visible(false)
-                    Toast.makeText(context?.applicationContext, "Present Tense Songs: ${it.value.results}" , Toast.LENGTH_LONG).show()
+                    binding.progressbar.visible(false)
+                    //Toast.makeText(context?.applicationContext, "Present Tense Songs: ${it.value.results}" , Toast.LENGTH_LONG).show()
 
 
                     val mainObject = JSONArray(it.value.results)
@@ -128,7 +129,7 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
                     }
 
 
-                    Toast.makeText(context?.applicationContext, "Present Tense Songs: ${presentTenseList}" , Toast.LENGTH_LONG).show()
+                 //   Toast.makeText(context?.applicationContext, "Present Tense Songs: ${presentTenseList}" , Toast.LENGTH_LONG).show()
 
                     binding.searchRecyclerFragment.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(query: String?): Boolean {
@@ -145,7 +146,7 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
                 }
 
                 is Resource.Loading -> {
-                    //binding.progressbar.visible(true)
+                    binding.progressbar.visible(true)
                 }
 
                 is Resource.Failure -> {

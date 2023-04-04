@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
@@ -43,14 +44,15 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<NavigationView>(R.id.nav_view).setupWithNavController(navController)
 
-
-
-
-
-//        userPreferences.authToken.asLiveData().observe(this, Observer {
-//            val activity = if (it == null) AuthActivity::class.java else MainActivity::class.java
-//            startNewActivity(activity)
-//        })
+//
+//        AlertDialog.Builder(this@MainActivity)
+//            .setTitle("Logout")
+//            .setMessage("Are you sure you want to logout now?")
+//            .setNegativeButton("NO", null)
+//            .setPositiveButton("YES"
+//            ) { arg0, arg1 ->
+//                logUserOut()
+//            }.create().show()
 
 
 

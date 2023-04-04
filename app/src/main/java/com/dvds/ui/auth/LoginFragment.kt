@@ -33,7 +33,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
             binding.progressbar.visible(true)
             when (it) {
                 is Resource.Success -> {
-                    Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
+                   // Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
                     lifecycleScope.launch {
 
                         viewModel.saveAuthToken(it.value.token.toString())
@@ -51,7 +51,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
             binding.progressbar.visible(true)
             when (it) {
                 is Resource.Success -> {
-                    Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
+                   // Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
                     lifecycleScope.launch {
 
                         viewModel.saveAuthToken(it.value.token.toString())

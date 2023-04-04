@@ -21,13 +21,17 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
+
+
+
         val userPreferences = UserPreferences(this)
         userPreferences.authToken.asLiveData().observe(this, Observer {
-            val activity = if (it == null) AuthActivity::class.java else SplashScreenActivity::class.java
-            startNewActivity(activity)
+            if (it == null) {
+               startNewActivity( AuthActivity::class.java)
+            }else{
+                startNewActivity( SplashScreenActivity::class.java)
+            }
+
         })
-
-
-
     }
 }

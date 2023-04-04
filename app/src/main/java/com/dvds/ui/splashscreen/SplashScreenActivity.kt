@@ -39,11 +39,10 @@ class SplashScreenActivity : AppCompatActivity() {
 //        })
 
         val SPLASH_TIME_OUT = 7000 //7 seconds
-        val homeIntent = Intent(this, MainActivity::class.java)
+
         Handler().postDelayed({
             //Do some stuff here, like implement deep linking
-            startActivity(homeIntent)
-            finish()
+           startNewActivity(MainActivity::class.java)
         }, SPLASH_TIME_OUT.toLong())
 
 
