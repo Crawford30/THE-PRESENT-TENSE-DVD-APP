@@ -18,6 +18,7 @@ import com.dvds.MyApp
 import com.dvds.R
 import com.dvds.databinding.FragmentPlayerBinding
 import com.dvds.helpers.Constants
+import com.dvds.helpers.setActivityTitle
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -39,6 +40,7 @@ class PlayerFragment : Fragment() {
     lateinit var handler: Handler
   //  lateinit var bt_fullscreen: ImageView
     private var videoUrl: String? = null
+    private var dvdName: String? = null
     private lateinit var httpDataSourceFactory: HttpDataSource.Factory
     private lateinit var defaultDataSourceFactory: DefaultDataSourceFactory
     private lateinit var cacheDataSourceFactory: DataSource.Factory
@@ -59,25 +61,19 @@ class PlayerFragment : Fragment() {
 
         binding = FragmentPlayerBinding.inflate(inflater, container, false)
 
-       // bt_fullscreen = findViewById(R.id.btn_fullscreen);
-
-
-//        val playerView = findViewById<PlayerView>(R.id.player)
-//        val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
-//        bt_fullscreen =  findViewById<ImageView>(R.id.bt_fullscreen)
-//        val bt_lockscreen = findViewById<ImageView>(R.id.exo_lock)
-
-        val progressBar = view?.findViewById<ProgressBar>(R.id.progress_bar);
-        //bt_fullscreen = view?.findViewById<ImageView>(R.id.btnFullscreen)!!
-       // val bt_lockscreen =  view?.findViewById<ImageView>(R.id.exoLock)
-
-
+        arguments?.getString(Constants.DVD_NAME)?.let { setActivityTitle(it) }
+        //getActivity()?.setTitle(dvdName)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
+
         videoUrl = arguments?.getString(Constants.VIDEO_URL)
+        dvdName = arguments?.getString(Constants.DVD_NAME)
+
 
         initPlayer()
     }
@@ -184,7 +180,10 @@ class PlayerFragment : Fragment() {
             }
         })
 
-        val videoUri = Uri.parse("http://10.0.2.2:8000/storage/presenttense/videodvds/c9e288-2a0789-ac574a-c4367b-27c6a2.mp4")
+        val videoUri =  Uri.parse(videoUrl)
+
+            //Uri.parse("http://10.0.2.2:8000/storage/presenttense/videodvds/9914bc-1fe20c-4fd4a2-3e3f70-681fbe.mp4")
+            //Uri.parse("http://10.0.2.2:8000/storage/presenttense/videodvds/c9e288-2a0789-ac574a-c4367b-27c6a2.mp4")
             //Uri.parse("http://10.0.2.2:8000/storage/presenttense/videodvds/9914bc-1fe20c-4fd4a2-3e3f70-681fbe.mp4")
 
             ///presenttense/videodvds/9914bc-1fe20c-4fd4a2-3e3f70-681fbe.mp4

@@ -23,8 +23,12 @@
     <fragment
         android:id="@+id/playerFragment"
         android:name="com.dvds.ui.player.PlayerFragment"
-        android:label="fragment_player"
-        tools:layout="@layout/fragment_player" />
+        android:label="{DVD_NAME}"
+        tools:layout="@layout/fragment_player">
+        <argument
+            android:name="DVD_NAME"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/videoDVDSFragment"
         android:name="com.dvds.ui.videodvds.VideoDVDSFragment"

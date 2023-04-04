@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -188,6 +189,24 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
         val VIDEOURL = "http://10.0.2.2:8000/storage/" + audioDVDItem.audioDVDPath
         videoList.add(VIDEOURL)
 
+        val bundle = Bundle()
+        bundle.putString(Constants.VIDEO_URL, VIDEOURL)
+        bundle.putString(Constants.DVD_NAME, audioDVDItem.audioDVDName)
+
+//        val bundle = bundleOf(
+//            "dvdURL" to VIDEOURL,
+//            "dvdName" to audioDVDItem.audioDVDName,
+//        )
+
+        //viewModel.setLanguages(countryDetails.language)
+//        navController?.navigate(
+//            R.id.action_countrysFragment_to_detailsFragment,
+//            bundle
+//        )
+
+//        val bundle = Bundle()
+//        bundle.putString(Constants.VIDEO_URL, VIDEOURL)
+
         startPreLoadingService()
 
 
@@ -196,7 +215,7 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
 
       //  Navigation.findNavController(view).navigate(sendData)
 
-        requireView().findNavController().navigate(R.id.action_to_player)
+        requireView().findNavController().navigate(R.id.action_to_player, bundle)
         //navigate(R.id.eventoFragment);
 
 
