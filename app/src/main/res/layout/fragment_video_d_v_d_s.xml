@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.videodvds.VideoDVDSFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_video_dvd_recycler_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorPrimary"
+        android:textCursorDrawable="@null"
+        app:defaultQueryHint="Search By DVD Name Or Date"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null"
+        app:queryHint="Search By DVD Name Or Date"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/video_dvd_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"/>
 
-</FrameLayout>
+</LinearLayout>

@@ -1,6 +1,5 @@
 package com.dvds.data.responses.videodvd
 
-
 data class VideoDVDResponse(
-    val videoDVDResults: List<VideoDVDResult>
+    val results: List<Result>
 )

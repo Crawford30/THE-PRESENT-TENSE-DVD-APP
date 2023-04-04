@@ -20,6 +20,7 @@
             android:id="@+id/action_to_player"
             app:destination="@id/playerFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/playerFragment"
         android:name="com.dvds.ui.player.PlayerFragment"
@@ -33,7 +34,11 @@
         android:id="@+id/videoDVDSFragment"
         android:name="com.dvds.ui.videodvds.VideoDVDSFragment"
         android:label="VIDEO DVDS"
-        tools:layout="@layout/fragment_video_d_v_d_s" />
+        tools:layout="@layout/fragment_video_d_v_d_s" >
+        <action
+            android:id="@+id/action_to_player"
+            app:destination="@id/playerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/EPublicationsFragment"
         android:name="com.dvds.ui.epublications.EPublicationsFragment"

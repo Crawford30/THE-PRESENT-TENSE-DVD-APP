@@ -1,9 +1,8 @@
 package com.dvds.data.responses.videodvd
 
-
 import com.google.gson.annotations.SerializedName
 
-data class VideoDVDResult(
+data class Result(
     @SerializedName("created_at")
     val createdAt: String,
     @SerializedName("creation_date")
@@ -21,4 +20,5 @@ data class VideoDVDResult(
     val videoDvdPermissions: List<String>,
     @SerializedName("views_count")
     val viewsCount: Int
+
 )

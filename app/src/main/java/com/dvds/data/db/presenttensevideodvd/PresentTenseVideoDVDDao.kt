@@ -12,7 +12,7 @@ interface PresentTenseVideoDVDDao {
     fun insertPresentTenseVideoDVD(audioDVD: MutableList<VideoDVD>)
 
     @Query("SELECT * FROM present_tense_video_dvd_table ORDER BY video_dvd_name + 0 ASC")
-    fun getPresentTenseAudioDVDLists(): List<VideoDVD>
+    fun getPresentTenseVideoDVDLists(): List<VideoDVD>
 
     @Query("DELETE FROM present_tense_video_dvd_table")
     fun deleteAllPresentTenseVideoDVD()
