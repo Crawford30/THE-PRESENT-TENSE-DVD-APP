@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:configChanges="orientation|screenSize|screenLayout"
             android:name=".MainActivity"
             android:exported="true" />
     </application>

@@ -1,73 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:argType="http://schemas.android.com/tools"
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.player.PlayerFragment">
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/playerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusable="true"
-        android:keepScreenOn="true">
+        app:use_controller="true"
+        android:background="@android:color/background_dark"
+        app:player_layout_id="@layout/exo_player_view"
+        app:controller_layout_id="@layout/custom_controller" />
 
-        <com.google.android.exoplayer2.ui.StyledPlayerView
-            android:id="@+id/playerView"
+    <ProgressBar
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/progress_bar"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="70dp"
+        android:background="@color/white"
+        android:id="@+id/sect_ad_countdown"
+        android:visibility="gone"
+        >
+        <TextView
+            android:id="@+id/tx_ad_countdown"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:show_subtitle_button="true"
-            argType:fastforward_increment="15000"
-            argType:resize_mode="fixed_width"
-            argType:rewind_increment="15000"
-            argType:show_buffering="when_playing"
-            argType:show_fastforward_button="true"
-            argType:show_next_button="false"
-            argType:show_previous_button="false"
-            argType:show_rewind_button="true"
-            argType:show_subtitle_button="true"
-            argType:use_artwork="true"
-            argType:use_controller="true"
-            argType:use_sensor_rotation="true" />
+            android:layout_height="wrap_content"
+            android:text="Ad in 5"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
 
-    </FrameLayout>
-
-
-
-    <!--<androidx.constraintlayout.widget.ConstraintLayout-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".ui.player.PlayerFragment">-->
-
-<!--    <com.google.android.exoplayer2.ui.PlayerView-->
-<!--        android:id="@+id/playerView"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.5"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:show_buffering="when_playing"-->
-<!--        app:show_shuffle_button="true" />-->
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".ui.player.PlayerFragment">-->
-<!--    -->
-<!--    -->
-<!--    -->
-
-<!--&lt;!&ndash;    <com.google.android.exoplayer2.ui.PlayerView&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/playerView"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        &ndash;&gt;-->
-<!--&lt;!&ndash;       />&ndash;&gt;-->
-
-<!--</FrameLayout>-->
+</RelativeLayout>
