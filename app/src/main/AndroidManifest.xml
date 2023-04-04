@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dvds" >
+    package="com.dvds">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,22 +13,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.PresentTense"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:theme="@style/NoActionBarTheme"
+            android:name=".ui.splashscreen.SplashScreenActivity"
+            android:exported="true">
 
+        </activity>
         <activity
             android:name=".ui.auth.AuthActivity"
             android:exported="true"
-            android:theme="@style/NoActionBarTheme" >
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
-            android:configChanges="orientation|screenSize|screenLayout"
             android:name=".MainActivity"
-            android:exported="true" />
+            android:configChanges="orientation|screenSize|screenLayout"
+            android:exported="true" >
+
+        </activity>
     </application>
 
 </manifest>

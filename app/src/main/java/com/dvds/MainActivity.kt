@@ -6,11 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
+import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.dvds.data.responses.user.UserPreferences
+import com.dvds.helpers.startNewActivity
+import com.dvds.ui.auth.AuthActivity
 import com.dvds.ui.player.PlayerFragment.Companion.isLock
+import com.dvds.ui.splashscreen.SplashScreenActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.custom_controller.*
 
@@ -24,13 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
-
-
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
-
 
         navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
