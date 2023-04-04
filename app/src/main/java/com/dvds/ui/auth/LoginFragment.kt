@@ -17,6 +17,7 @@ import com.dvds.helpers.handleApiError
 import com.dvds.helpers.startNewActivity
 import com.dvds.helpers.visible
 import com.dvds.ui.base.BaseFragment
+import com.dvds.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.launch
 

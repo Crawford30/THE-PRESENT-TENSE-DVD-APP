@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.dvds.MainActivity
 import com.dvds.R
 import com.dvds.helpers.startNewActivity
+import com.dvds.ui.home.HomeActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
