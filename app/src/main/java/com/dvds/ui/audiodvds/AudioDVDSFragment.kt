@@ -1,6 +1,5 @@
 package com.dvds.ui.audiodvds
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -26,6 +25,7 @@ import com.dvds.data.model.AudioDVD
 import com.dvds.data.network.DVDApi
 import com.dvds.data.network.Resource
 import com.dvds.data.respository.AudioDVDRepository
+import com.dvds.data.service.VideoPreLoadingService
 import com.dvds.databinding.FragmentAudioDVDSBinding
 import com.dvds.helpers.Constants
 import com.dvds.helpers.TopSpacingItemDecoration
@@ -188,12 +188,15 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
         val VIDEOURL = "http://10.0.2.2:8000/storage/" + audioDVDItem.audioDVDPath
         videoList.add(VIDEOURL)
 
+        startPreLoadingService()
+
+
 
         //val sendData = AudioDVDSFragment.playerFragment(VIDEOURL)
 
       //  Navigation.findNavController(view).navigate(sendData)
 
-        //requireView().findNavController().navigate(R.id.action_audio_dvd_fragment_to_detail_fragment)
+        requireView().findNavController().navigate(R.id.action_to_player)
         //navigate(R.id.eventoFragment);
 
 
@@ -210,6 +213,12 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
 
     }
 
+
+    private fun startPreLoadingService() {
+        val preloadingServiceIntent = Intent(context, VideoPreLoadingService::class.java)
+        preloadingServiceIntent.putStringArrayListExtra(Constants.VIDEO_LIST, videoList)
+        context?.startService(preloadingServiceIntent)
+    }
 
 
 

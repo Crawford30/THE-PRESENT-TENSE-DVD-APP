@@ -16,10 +16,15 @@
         android:name="com.dvds.ui.audiodvds.AudioDVDSFragment"
         android:label="AUDIO DVDS"
         tools:layout="@layout/fragment_audio_d_v_d_s">
-<!--        <action-->
-<!--            android:id="@+id/action_audio_dvd_fragment_to_detail_fragment"-->
-<!--            app:destination="@id/myFragment" />-->
+        <action
+            android:id="@+id/action_to_player"
+            app:destination="@id/playerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.dvds.ui.player.PlayerFragment"
+        android:label="fragment_player"
+        tools:layout="@layout/fragment_player" />
     <fragment
         android:id="@+id/videoDVDSFragment"
         android:name="com.dvds.ui.videodvds.VideoDVDSFragment"
