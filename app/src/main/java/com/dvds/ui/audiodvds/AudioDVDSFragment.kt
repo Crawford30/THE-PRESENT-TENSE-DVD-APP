@@ -178,70 +178,35 @@ class AudioDVDSFragment : BaseFragment<AudioDVDViewModel,FragmentAudioDVDSBindin
 
         //1. api instance
         val api = remoteDataSource.buildApi(DVDApi::class.java, token)
-
         return AudioDVDRepository(api)
     }
 
     override fun onItemClick(audioDVDItem: AudioDVD, position: Int, view: View) {
         videoList.clear()
-        print("ITEM CLICKED: ${audioDVDItem} POSITION: ${position}")
-        Log.d("HomeFragment", "ITEM CLICKED: ${audioDVDItem} POSITION: ${position}")
-        val VIDEOURL = "http://10.0.2.2:8000/storage/" + audioDVDItem.audioDVDPath
-        videoList.add(VIDEOURL)
 
+        val VIDEO_URL = Constants.BASE_URL + "storage/" + audioDVDItem.audioDVDPath
+
+        //Declare a bundle to pass data to player screen
         val bundle = Bundle()
-        bundle.putString(Constants.VIDEO_URL, VIDEOURL)
+        bundle.putString(Constants.VIDEO_URL, VIDEO_URL)
         bundle.putString(Constants.DVD_NAME, audioDVDItem.audioDVDName)
 
-//        val bundle = bundleOf(
-//            "dvdURL" to VIDEOURL,
-//            "dvdName" to audioDVDItem.audioDVDName,
-//        )
-
-        //viewModel.setLanguages(countryDetails.language)
-//        navController?.navigate(
-//            R.id.action_countrysFragment_to_detailsFragment,
-//            bundle
-//        )
-
-//        val bundle = Bundle()
-//        bundle.putString(Constants.VIDEO_URL, VIDEOURL)
-
+         //Load the player service
         startPreLoadingService()
 
-
-
-        //val sendData = AudioDVDSFragment.playerFragment(VIDEOURL)
-
-      //  Navigation.findNavController(view).navigate(sendData)
-
+        //Navigate to the player fragment
         requireView().findNavController().navigate(R.id.action_to_player, bundle)
-        //navigate(R.id.eventoFragment);
-
-
-
-
         //requireActivity().startNewActivity(DetailActivity::class.java)
 
         Log.d("HomeFragment", "ITEM CLICKED VIDEO LIST: ${videoList}")
-        //homeScreenCallback?.openVideoPlayScreen(videoList[0])
-
-       // Navigation.findNavController(view)
-         //   .navigate(R.id.action_audio_dvd_fragment_to_detail_fragment, null)
-
 
     }
-
 
     private fun startPreLoadingService() {
         val preloadingServiceIntent = Intent(context, VideoPreLoadingService::class.java)
         preloadingServiceIntent.putStringArrayListExtra(Constants.VIDEO_LIST, videoList)
         context?.startService(preloadingServiceIntent)
     }
-
-
-
-
 
 
 }
