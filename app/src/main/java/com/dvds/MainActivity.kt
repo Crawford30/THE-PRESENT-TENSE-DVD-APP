@@ -1,6 +1,7 @@
 package com.dvds
 
 import android.content.Context
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
@@ -9,7 +10,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.dvds.ui.player.PlayerFragment.Companion.isLock
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.custom_controller.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var appBarConfiguration: AppBarConfiguration
@@ -53,6 +56,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+      override  fun onBackPressed() {
+        if(isLock) return
+        if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        {
+            bt_fullscreen.performClick()
+        }
+       else super.onBackPressed()
+
+    }
 
 
 

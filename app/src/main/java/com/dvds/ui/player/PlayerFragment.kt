@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import com.dvds.MyApp
 import com.dvds.R
@@ -181,14 +182,6 @@ class PlayerFragment : Fragment() {
         })
 
         val videoUri =  Uri.parse(videoUrl)
-
-            //Uri.parse("http://10.0.2.2:8000/storage/presenttense/videodvds/9914bc-1fe20c-4fd4a2-3e3f70-681fbe.mp4")
-            //Uri.parse("http://10.0.2.2:8000/storage/presenttense/videodvds/c9e288-2a0789-ac574a-c4367b-27c6a2.mp4")
-            //Uri.parse("http://10.0.2.2:8000/storage/presenttense/videodvds/9914bc-1fe20c-4fd4a2-3e3f70-681fbe.mp4")
-
-            ///presenttense/videodvds/9914bc-1fe20c-4fd4a2-3e3f70-681fbe.mp4
-
-            //Uri.parse("http://10.0.2.2:8000/storage/presenttense/videodvds/c9e288-2a0789-ac574a-c4367b-27c6a2.mp4")
         val mediaItem = MediaItem.fromUri(videoUri)
         val mediaSource = ProgressiveMediaSource.Factory(cacheDataSourceFactory).createMediaSource(mediaItem)
 
@@ -229,15 +222,11 @@ class PlayerFragment : Fragment() {
         }
     }
 
-//    override fun onBackPressed() {
-//        if(isLock) return
-//        if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-//        {
-//            btn_fullscreen.performClick()
-//        }
-//        else super.onBackPressed()
-//
-//    }
+
+
+
+
+
 
     override fun onStop() {
         super.onStop()
