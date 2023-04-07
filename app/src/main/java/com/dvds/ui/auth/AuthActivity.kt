@@ -25,13 +25,15 @@ class AuthActivity : AppCompatActivity() {
 
 
         val userPreferences = UserPreferences(this)
-        userPreferences.authToken.asLiveData().observe(this, Observer {
-            if (it == null) {
-               startNewActivity( AuthActivity::class.java)
-            }else{
-                startNewActivity( SplashScreenActivity::class.java)
-            }
 
-        })
+       // startNewActivity( MainActivity::class.java)
+//        userPreferences.authToken.asLiveData().observe(this, Observer {
+//            if (it == null) {
+//               startNewActivity( AuthActivity::class.java)
+//            }else{
+//                startNewActivity( AuthActivity::class.java)
+//            }
+//
+//        })
     }
 }
