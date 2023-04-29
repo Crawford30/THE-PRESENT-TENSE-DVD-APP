@@ -1,4 +1,4 @@
-package com.dvds.data.responses.user
+package com.dvds.data.responses.user.login
 
 
 import com.google.gson.annotations.SerializedName

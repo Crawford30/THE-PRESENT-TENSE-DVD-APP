@@ -7,7 +7,9 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import com.dvds.MainActivity
+import com.dvds.R
 import com.dvds.data.network.AuthApi
 import com.dvds.data.network.Resource
 import com.dvds.databinding.FragmentLoginBinding
@@ -77,7 +79,13 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
 //                Toast.LENGTH_LONG).show()
 //            ShowHidePass(this)
 //        }
+
+
+        binding.backToRegister.setOnClickListener {
+            view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.action_to_register) }
+        }
     }
+
 
 
 

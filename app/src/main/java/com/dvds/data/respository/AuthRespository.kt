@@ -12,6 +12,13 @@ class AuthRepository(private val api: AuthApi, private val preferences: UserPref
     }
 
 
+    //Registration Call
+    suspend fun register(name: String,email:String, password:String) =  safeApiCall {
+        api.register(name,email, password)
+    }
+
+
+
 //    suspend fun saveAccessTokens(accessToken: String, refreshToken: String) {
 //        preferences.saveAccessTokens(accessToken, refreshToken)
 //    }

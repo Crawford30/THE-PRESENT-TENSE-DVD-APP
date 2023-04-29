@@ -9,10 +9,19 @@
         android:id="@+id/loginFragment"
         android:name="com.dvds.ui.auth.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_to_register"
+            app:destination="@id/registerFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.dvds.ui.auth.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
