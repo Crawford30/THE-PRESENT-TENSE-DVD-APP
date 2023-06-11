@@ -38,7 +38,7 @@ class PresentTenseAudioDVDAdapter(private var presentTenseAudioDVDList: ArrayLis
         val layoutInflater = LayoutInflater.from(parent?.context)
 
         val cellForRow = layoutInflater.inflate(R.layout.dvd_items_layout, parent, false)
-        appContext = parent.getContext();
+        appContext = parent.context;
 
         // return  cellForRow, but in a constructor  CustomViewHolder(cellForRow)
         return  CustomPresentTenseVH(cellForRow)
